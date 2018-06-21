@@ -9,7 +9,7 @@ namespace UniversalHealthcareViewer
         {
             DocumentId = documentId;
         }
-
+        //DIP
         public int DocumentId { get; set; }
 
         public abstract Image GetPage(int pageNum);
@@ -22,7 +22,7 @@ namespace UniversalHealthcareViewer
 
     public class LocalDataSource : AbstractDataSource
     {
-        public LocalDataSource(int documentId) : base(documentId)
+        public LocalDataSource(int documentId) : base(documentId) //reuse
         {
         }
 
