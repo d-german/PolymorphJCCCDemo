@@ -4,7 +4,19 @@
     {
         public static AbstractDataSource BuildDataSource(int documentId)
         {
-            return documentId == 0 ?  new LocalDataSource(55) as AbstractDataSource : new RemoteDataSource(documentId);
+            AbstractDataSource dataSource = null;
+            
+            switch (documentId)
+            {
+                case 0:
+                    dataSource = new LocalDataSource(); 
+                    break;
+                case 1:
+                   dataSource = new RemoteDataSource(); 
+                    break;
+            }
+
+            return dataSource;
         }
     }
 }

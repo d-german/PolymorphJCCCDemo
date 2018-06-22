@@ -5,27 +5,15 @@ namespace UniversalHealthcareViewer
 {
     public abstract class AbstractDataSource
     {
-        protected AbstractDataSource(int documentId)
-        {
-            DocumentId = documentId;
-        }
-        //DIP
-        public int DocumentId { get; set; }
-
         public abstract Image GetPage(int pageNum);
-
-        public virtual int GetPageCount()
-        {
-            return 1;
-        }
     }
+
+
+
+
 
     public class LocalDataSource : AbstractDataSource
     {
-        public LocalDataSource(int documentId) : base(documentId) //reuse
-        {
-        }
-
         public override Image GetPage(int pageNum)
         {
             string filename;
@@ -44,18 +32,9 @@ namespace UniversalHealthcareViewer
 
     public class RemoteDataSource : AbstractDataSource
     {
-        public RemoteDataSource(int documentId) : base(documentId)
-        {
-        }
-
         public override Image GetPage(int pageNum)
         {
-            return Image.FromFile($"http://imageService/{DocumentId}/{pageNum}");
-        }
-
-        public override int GetPageCount()
-        {
-            return base.GetPageCount() + 1;
+            return Image.FromFile($"http://imageService/{pageNum}");
         }
     }
 }

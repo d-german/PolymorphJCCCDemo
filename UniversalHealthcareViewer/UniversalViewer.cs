@@ -4,18 +4,18 @@ namespace UniversalHealthcareViewer
 {
     public class UniversalViewer
     {
-        //DI
-        public AbstractDataSource DataSource { get; set; }
         //DIP
+        public AbstractDataSource DataSource { get; set; }
+        
         public UniversalViewer(AbstractDataSource dataSource)
         {
             this.DataSource = dataSource;
         }
-        //OCP?
+        //OCP,LSP,DIP 
         public void DrawPage(int pageNum)
         {
             var image = DataSource.GetPage(pageNum);
-            Console.WriteLine($"Using {DataSource.ToString()} to draw a page.");
+            Console.WriteLine($"Using {DataSource.ToString()} to draw a page with size {image.Size}");
         }
     }
 }
