@@ -1,15 +1,17 @@
-﻿using System.Drawing;
+﻿using System;
+using System.Drawing;
 using System.Windows.Forms;
 
 namespace UniversalHealthcareViewer
 {
     public abstract class AbstractDataSource
     {
+        //DIP
+        public string DocumentId { get; set; }
+        public DateTime CreationDate { get; set; }
+
         public abstract Image GetPage(int pageNum);
     }
-
-
-
 
 
     public class LocalDataSource : AbstractDataSource
