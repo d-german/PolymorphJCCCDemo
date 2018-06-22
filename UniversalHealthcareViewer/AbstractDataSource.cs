@@ -11,6 +11,11 @@ namespace UniversalHealthcareViewer
         public DateTime CreationDate { get; set; }
 
         public abstract Image GetPage(int pageNum);
+
+        public virtual int GetPageCount()
+        {
+            return 1;
+        }
        
     }
 
